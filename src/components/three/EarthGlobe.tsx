@@ -114,10 +114,10 @@ const EarthMesh = () => {
   const groupRef = useRef<THREE.Group>(null);
 
   const [colorMap, normalMap, specularMap, cloudsMap] = useTexture([
-    'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg',
-    'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_normal_2048.jpg',
-    'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_specular_2048.jpg',
-    'https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_clouds_1024.png',
+    '/textures/earth_atmos_2048.jpg',
+    '/textures/earth_normal_2048.jpg',
+    '/textures/earth_specular_2048.jpg',
+    '/textures/earth_clouds_1024.png',
   ]);
 
   useFrame(() => {
