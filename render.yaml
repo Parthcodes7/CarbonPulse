@@ -1,0 +1,26 @@
+# ─────────────────────────────────────────────────────────────────────
+# GreenPrint – Render.com Deployment Config
+# 1. Push your repo to GitHub
+# 2. On render.com → "New" → "Blueprint" → connect your repo
+# 3. Render reads this file and sets everything up automatically
+# 4. Set ANTHROPIC_API_KEY in the Render dashboard → Environment tab
+# ─────────────────────────────────────────────────────────────────────
+
+services:
+  - type: web
+    name: greenprint
+    runtime: node
+    region: singapore   # closest to India
+    plan: free
+
+    # Render runs this before starting the server
+    buildCommand: npm install && npm run build
+
+    # Render runs this to start the server (serves React build + /api)
+    startCommand: npm run start
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ANTHROPIC_API_KEY
+        sync: false   # Set manually in Render dashboard (never in code!)
