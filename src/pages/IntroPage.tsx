@@ -97,7 +97,7 @@ export default function IntroPage({ onStart }: IntroPageProps) {
         <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 backdrop-blur-sm">
           <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
           <span className="text-emerald-400 text-sm font-semibold tracking-widest uppercase">
-            CarbonSense AI — Live
+            CarbonPulse AI — Live
           </span>
         </div>
       </div>
