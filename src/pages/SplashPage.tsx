@@ -153,7 +153,7 @@ export default function SplashPage({ onEnter }: SplashPageProps) {
                 </div>
               </div>
               <div>
-                <div className="text-3xl font-black tracking-tight text-white">GreenPrint</div>
+                <div className="text-3xl font-black tracking-tight text-white">CarbonPulse</div>
                 <div className="text-xs font-bold text-emerald-400 tracking-widest uppercase">Carbon Intelligence</div>
               </div>
             </div>
@@ -174,7 +174,7 @@ export default function SplashPage({ onEnter }: SplashPageProps) {
 
           {/* Description */}
           <p id="splash-desc" className="opacity-0 text-gray-400 text-sm leading-relaxed mb-8">
-            GreenPrint is an AI-powered carbon footprint calculator. 
+            CarbonPulse is an AI-powered carbon footprint calculator. 
             Understand your environmental impact across energy, transport, 
             food, and lifestyle — then get a personalised action plan.
           </p>

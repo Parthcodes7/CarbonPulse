@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────
-// GreenPrint – Unified Express Server
+// CarbonPulse – Unified Express Server
 //
 //  • In production  → serves the Vite build at /  AND  /api routes
 //  • In development → Vite dev server runs on :5173, this runs on :3001
@@ -78,7 +78,7 @@ app.post('/api/ai-analyze', rateLimit, async (req, res) => {
   const { total_kg, label, breakdown, comparisons } = req.body;
 
   // Build prompt from validated data — never trust raw user strings in the prompt
-  const prompt = `You are CarbonSense AI, an expert environmental analyst embedded in the GreenPrint platform.
+  const prompt = `You are CarbonSense AI, an expert environmental analyst embedded in the CarbonPulse platform.
 
 The user has completed their carbon footprint assessment. Here are the verified results:
 
@@ -142,7 +142,7 @@ if (isProd) {
 
 // ── Start ─────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`\n🌿 GreenPrint server running`);
+  console.log(`\n🌿 CarbonPulse server running`);
   console.log(`   Mode:    ${isProd ? 'production' : 'development'}`);
   console.log(`   Port:    ${PORT}`);
   console.log(`   AI key:  ${process.env.ANTHROPIC_API_KEY ? '✅ loaded' : '❌ missing (set ANTHROPIC_API_KEY)'}\n`);

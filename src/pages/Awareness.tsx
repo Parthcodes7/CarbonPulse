@@ -208,9 +208,9 @@ export default function Awareness({ onBack }: AwarenessProps) {
           <button
             onClick={onBack}
             className="px-10 py-4 rounded-full border border-white/20 text-gray-300 hover:bg-white/5 transition-colors font-semibold focus:outline-none focus:ring-2 focus:ring-white/30"
-            aria-label="Return to the GreenPrint home page"
+            aria-label="Return to the CarbonPulse home page"
           >
-            ← Back to GreenPrint
+            ← Back to CarbonPulse
           </button>
         </div>
 

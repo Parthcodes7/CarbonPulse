@@ -81,7 +81,7 @@ export default function IntroPage({ onStart }: IntroPageProps) {
                 letterSpacing={0.15}
                 font="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2"
               >
-                GreenPrint
+                CarbonPulse
               </Text>
             </Float>
           </Suspense>

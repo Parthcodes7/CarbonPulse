@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background text-white font-sans overflow-hidden">
-      <Suspense fallback={<div className="h-screen flex items-center justify-center text-accent">Loading GreenPrint...</div>}>
+      <Suspense fallback={<div className="h-screen flex items-center justify-center text-accent">Loading CarbonPulse...</div>}>
         {currentPage === 'splash'      && <SplashPage onEnter={() => setCurrentPage('intro')} />}
         {currentPage === 'intro'       && <IntroPage onStart={() => setCurrentPage('calculator')} />}
         {currentPage === 'calculator'  && <Calculator onComplete={(data) => { setFootprintData(data); setCurrentPage('results'); }} />}

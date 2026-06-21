@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────────────────────────────
-# GreenPrint – Render.com Deployment Config
+# CarbonPulse — Render.com Deployment Config
 # 1. Push your repo to GitHub
 # 2. On render.com → "New" → "Blueprint" → connect your repo
 # 3. Render reads this file and sets everything up automatically
@@ -8,7 +8,7 @@
 
 services:
   - type: web
-    name: greenprint
+    name: carbonpulse
     runtime: node
     region: singapore   # closest to India
     plan: free
