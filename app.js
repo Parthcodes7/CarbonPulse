@@ -6,10 +6,7 @@
 
 "use strict";
 
-// Production: set this to your Cloud Run service URL.
-// Local dev: falls back to localhost:5000 automatically.
-const API_URL =
-  (window.CARBONPULSE_API_URL || "http://127.0.0.1:5000") + "/api/analyze";
+const API_URL = "/api/analyze";
 const UI_DELAY_MS = 800; // small delay for a smooth transition feel
 
 // ---------------------------------------------------------------------------

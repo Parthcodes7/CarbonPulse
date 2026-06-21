@@ -6,11 +6,21 @@ Public symbols (also used by test_app.py):
   _safe_float, _safe_int, _comparison_string, computeEmissions_py
 """
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='.', static_url_path='')
 CORS(app)
+
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
+@app.route('/<path:path>')
+def static_proxy(path):
+    if path in ['app.js', 'styles.css', 'carbon_logic.js']:
+        return app.send_static_file(path)
+    return "Not Found", 404
 
 # ---------------------------------------------------------------------------
 # Emission-factor constants (kg CO₂e per unit)
@@ -292,4 +302,6 @@ def analyze():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    import os
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port, debug=False)
