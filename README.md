@@ -1,73 +1,72 @@
-# React + TypeScript + Vite
+# CarbonPulse AI 🌍
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**CarbonPulse AI** is an interactive, real-time web application built to help users understand, visualize, and reduce their environmental impact. 
 
-Currently, two official plugins are available:
+This project was proudly built as part of the **PromptWar** challenge hosted by **@Hack2Skill**. Guided by the goal of creating impactful solutions, **Google's AI tools** were heavily leveraged during the development process to write, refine, and seamlessly deploy this application onto **Google Cloud** infrastructure.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🔗 **[Live Demo on Google Cloud](https://storage.googleapis.com/carbonpulse-500106-hosting/index.html)**
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+- **Immersive 3D Visuals:** A highly interactive, rotating 3D Earth built with React Three Fiber. Watch the globe dynamically react with orbiting CO₂ molecules and green leaves based on your inputs.
+- **Smart Carbon Calculation:** An intelligent engine calculating your footprint across four key metrics: Energy, Transport, Food, and Lifestyle/Shopping.
+- **Global Benchmarking:** Instantly compares your emissions against global averages and the Paris Agreement targets.
+- **Actionable Eco-Plan:** Generates a personalized, step-by-step action plan ranking lifestyle changes by difficulty and their direct impact on reducing your emissions.
+- **Serverless & Fast:** Deployed completely serverless via Google Cloud Storage for instantaneous loading and global reach.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- **Frontend Framework:** React 19, Vite, TypeScript
+- **3D Graphics & Animation:** Three.js, React Three Fiber, React Three Drei, GSAP
+- **Styling:** Tailwind CSS
+- **Deployment:** Google Cloud Storage (GCP)
+- **AI Integration:** Developed with the assistance of Google AI tools.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚀 Local Setup & Installation
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Follow these steps to run CarbonPulse AI on your local machine:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Parthcodes7/CarbonPulse.git
+   cd CarbonPulse
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+   *The app will be available at `http://localhost:5173`*
+
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+---
+
+## 📁 Project Structure
+
+- `src/components/three/EarthGlobe.tsx` - Contains the 3D logic and textures for the interactive globe.
+- `src/lib/calculationEngine.ts` - The core TypeScript logic processing user inputs to calculate kg CO₂e.
+- `src/pages/` - Contains the individual views (Intro, Calculator, Results).
+- `src/assets/` - Contains static images and optimized textures for the 3D models.
+
+---
+
+## 🙌 Acknowledgements
+
+A massive thank you to **Hack2Skill** for organizing the PromptWar and pushing developers to build technology that drives positive change. Let's build a greener future, one line of code at a time!
+
+#Hack2Skill #PromptWar #GoogleCloud #GeminiAI #ClimateTech #WebDevelopment
