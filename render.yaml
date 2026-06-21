@@ -9,18 +9,10 @@
 services:
   - type: web
     name: carbonpulse
-    runtime: node
-    region: singapore   # closest to India
+    env: static
+    region: singapore
     plan: free
 
-    # Render runs this before starting the server
     buildCommand: npm install && npm run build
+    publishPath: dist
 
-    # Render runs this to start the server (serves React build + /api)
-    startCommand: npm run start
-
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: ANTHROPIC_API_KEY
-        sync: false   # Set manually in Render dashboard (never in code!)

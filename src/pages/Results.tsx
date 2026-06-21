@@ -6,7 +6,6 @@ import { ArrowDown, ArrowUp, Leaf, Car, Smartphone } from 'lucide-react';
 import * as THREE from 'three';
 import type { CalculatorFormData, FootprintResult } from '../types';
 import { generateFootprintResult } from '../lib/calculationEngine';
-import { fetchAIAnalysis } from '../lib/aiService';
 
 // ── 3D Trophy ────────────────────────────────────────────────────────
 const Trophy3D = ({ emoji }: { emoji: string }) => {
@@ -36,19 +35,16 @@ interface ResultsProps {
 export default function Results({ data, onExplore }: ResultsProps) {
   const [loading, setLoading]       = useState(true);
   const [result, setResult]         = useState<FootprintResult | null>(null);
-  const [aiText, setAiText]         = useState<string>('');
   const [activeTips, setActiveTips] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     setLoading(true);
-    const footprint = generateFootprintResult(data);
-    setResult(footprint);
-
-    // Call Claude via the secure Express proxy
-    fetchAIAnalysis(footprint)
-      .then(res => setAiText(res.analysis))
-      .catch(() => setAiText(footprint.message))
-      .finally(() => setLoading(false));
+    // Simulate slight calculation latency for effect
+    const timer = setTimeout(() => {
+      setResult(generateFootprintResult(data));
+      setLoading(false);
+    }, 1500);
+    return () => clearTimeout(timer);
   }, [data]);
 
   const simulatedTotal = useMemo(() => {
@@ -69,8 +65,7 @@ export default function Results({ data, onExplore }: ResultsProps) {
     return (
       <div className="h-screen flex flex-col items-center justify-center bg-background gap-4" role="status" aria-live="polite">
         <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin" />
-        <h2 className="text-xl text-white font-light tracking-widest animate-pulse">CarbonSense AI Analyzing…</h2>
-        <p className="text-sm text-gray-600">Calculating your footprint &amp; calling Claude AI</p>
+        <h2 className="text-xl text-white font-light tracking-widest animate-pulse">Calculating Footprint…</h2>
       </div>
     );
   }
@@ -103,15 +98,11 @@ export default function Results({ data, onExplore }: ResultsProps) {
         {/* HERO */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div className="glass-panel p-8 rounded-3xl flex flex-col justify-center">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
-              <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">CarbonSense AI</span>
-            </div>
             <h1 className="text-3xl font-bold mb-3">Your Carbon Footprint</h1>
 
-            {/* AI-generated analysis text */}
-            <p className="text-gray-300 text-sm leading-relaxed mb-6 border-l-2 border-emerald-500/40 pl-4 italic">
-              {aiText || result.message}
+            {/* Analysis text */}
+            <p className="text-gray-300 text-sm leading-relaxed mb-6">
+              {result.message}
             </p>
 
             <div className="flex items-baseline gap-2" aria-live="polite">
