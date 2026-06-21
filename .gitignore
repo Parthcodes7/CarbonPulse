@@ -1,0 +1,46 @@
+# ─────────────────────────────────────────────────
+# CarbonPulse AI – Root .gitignore
+# ─────────────────────────────────────────────────
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+venv/
+.venv/
+env/
+ENV/
+.pytest_cache/
+
+# Node / Frontend
+greenprint/node_modules/
+greenprint/dist/
+greenprint/dist-ssr/
+*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# GCloud
+.gcloudignore

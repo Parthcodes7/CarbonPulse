@@ -1,0 +1,18 @@
+# ─────────────────────────────────────────────────────────────────────
+# CarbonPulse — Render.com Deployment Config
+# 1. Push your repo to GitHub
+# 2. On render.com → "New" → "Blueprint" → connect your repo
+# 3. Render reads this file and sets everything up automatically
+# 4. Set ANTHROPIC_API_KEY in the Render dashboard → Environment tab
+# ─────────────────────────────────────────────────────────────────────
+
+services:
+  - type: web
+    name: carbonpulse
+    env: static
+    region: singapore
+    plan: free
+
+    buildCommand: npm install && npm run build
+    publishPath: dist
+

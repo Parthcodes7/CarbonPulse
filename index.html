@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarbonPulse AI - Footprint Analyzer</title>
+  <meta name="description" content="Calculate, analyze, and educate yourself about your personal carbon footprint." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="app-container">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">🌍</span>
+        <h1>CarbonPulse <span class="accent">AI</span></h1>
+      </div>
+      <p class="subtitle">Intelligent insights for a sustainable lifestyle</p>
+    </header>
+
+    <main class="main-content">
+      
+      <!-- Input Section -->
+      <section id="input-section" class="card glass-panel">
+        <h2 class="section-title">Configure Your Lifestyle Profile</h2>
+        
+        <form id="footprint-form" class="form-grid">
+          
+          <!-- Home Energy -->
+          <div class="form-group-category">
+            <h3>🏠 Home Energy</h3>
+            <div class="input-group">
+              <label for="elec-kwh">Monthly Electricity (kWh)</label>
+              <input type="number" id="elec-kwh" placeholder="e.g. 150" value="150" required />
+            </div>
+            <div class="input-group">
+              <label for="grid-type">Energy Source</label>
+              <select id="grid-type">
+                <option value="coal">Standard Grid (Coal)</option>
+                <option value="mixed">Mixed Grid</option>
+                <option value="renewable">Renewable / Solar</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="gas-kg">Monthly Cooking Gas / LPG (kg)</label>
+              <input type="number" id="gas-kg" placeholder="e.g. 14.2" value="14.2" required />
+            </div>
+            <div class="input-group">
+              <label for="household-size">Household Size (People)</label>
+              <input type="number" id="household-size" placeholder="e.g. 3" value="1" required min="1" />
+            </div>
+          </div>
+
+          <!-- Transportation -->
+          <div class="form-group-category">
+            <h3>🚗 Transportation</h3>
+            <div class="input-group">
+              <label for="vehicle-type">Primary Vehicle Type</label>
+              <select id="vehicle-type">
+                <option value="petrol">Petrol Car</option>
+                <option value="diesel">Diesel Car</option>
+                <option value="cng">CNG Car</option>
+                <option value="electric">Electric Vehicle</option>
+                <option value="none">None / Public Transit Only</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="km-week">Average km driven per week</label>
+              <input type="number" id="km-week" placeholder="e.g. 100" value="100" required />
+            </div>
+            <div class="input-group">
+              <label for="flights-short">Short-haul flights per year (<3hrs)</label>
+              <input type="number" id="flights-short" placeholder="e.g. 2" value="2" required />
+            </div>
+            <div class="input-group">
+              <label for="flights-long">Long-haul flights per year (>3hrs)</label>
+              <input type="number" id="flights-long" placeholder="e.g. 0" value="0" required />
+            </div>
+          </div>
+
+          <!-- Food & Diet -->
+          <div class="form-group-category">
+            <h3>🍽️ Food & Diet</h3>
+            <div class="input-group">
+              <label for="diet-type">Diet Type</label>
+              <select id="diet-type">
+                <option value="vegan">Vegan</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="average" selected>Average Meat-Eater</option>
+                <option value="heavy">Heavy Meat-Eater</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="food-waste">How often is food wasted?</label>
+              <select id="food-waste">
+                <option value="never">Never</option>
+                <option value="sometimes" selected>Sometimes</option>
+                <option value="often">Often</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Shopping & Lifestyle -->
+          <div class="form-group-category">
+            <h3>🛍️ Shopping & Lifestyle</h3>
+            <div class="input-group">
+              <label for="fast-fashion">Fast fashion items per year</label>
+              <input type="number" id="fast-fashion" placeholder="e.g. 12" value="12" required />
+            </div>
+            <div class="input-group">
+              <label for="electronics">Electronic devices per year</label>
+              <input type="number" id="electronics" placeholder="e.g. 1" value="1" required />
+            </div>
+          </div>
+
+        </form>
+
+        <div class="action-container">
+          <button type="button" class="btn-analyze" id="analyze-btn" onclick="analyzeFootprint()">
+            <span class="btn-text">🌍 Analyze My Footprint</span>
+            <span class="btn-loading" style="display:none;"><div class="spinner"></div> Processing...</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Loading Overlay -->
+      <div id="loading-overlay" class="loading-overlay glass-panel" style="display:none;">
+        <div class="loading-content">
+          <div class="loader-ring"></div>
+          <h3>CarbonPulse AI is analyzing...</h3>
+          <p id="loading-msg">Processing environmental impact...</p>
+        </div>
+      </div>
+
+      <!-- Results Section -->
+      <section id="results-section" class="results-container" style="display:none;">
+        
+        <!-- Score Header -->
+        <div class="score-header glass-panel highlight-card">
+          <div class="score-main">
+            <h2 id="score-label" class="score-label">Eco Champion</h2>
+            <div class="score-number-container">
+              <span id="score-emoji" class="score-emoji">🟢</span>
+              <span id="score-total" class="score-total">1,500</span>
+              <span class="score-unit">kg CO₂e/yr</span>
+            </div>
+            <p id="motivational-message" class="motivational-msg"></p>
+          </div>
+          
+          <div class="comparisons">
+            <div class="comp-item"><span class="comp-label">vs Global (4800):</span> <span id="comp-global" class="comp-val"></span></div>
+            <div class="comp-item"><span class="comp-label">vs India (1900):</span> <span id="comp-india" class="comp-val"></span></div>
+            <div class="comp-item"><span class="comp-label">vs Paris (2300):</span> <span id="comp-paris" class="comp-val"></span></div>
+          </div>
+        </div>
+
+        <!-- Breakdown Grid -->
+        <h3 class="sub-heading">Category Breakdown</h3>
+        <div class="breakdown-grid" id="breakdown-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Action Plan -->
+        <h3 class="sub-heading">Your Action Plan</h3>
+        <div class="action-plan-grid" id="action-plan-grid">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- Equivalencies -->
+        <div class="equivalencies-section glass-panel">
+          <h3 class="sub-heading">What does this mean?</h3>
+          <ul id="equivalencies-list" class="equivalencies-list">
+            <!-- Populated by JS -->
+          </ul>
+        </div>
+
+        <!-- Warnings & Dev Info -->
+        <div id="warnings-container" class="warnings-container" style="display:none;">
+          <h4 class="warning-title">⚠️ Data Validation Notes</h4>
+          <ul id="warnings-list"></ul>
+        </div>
+
+        <details class="promptwar-details glass-panel">
+          <summary>Promptwar Evaluation Data</summary>
+          <pre id="promptwar-eval" class="eval-json"></pre>
+        </details>
+
+        <div class="action-container">
+          <button class="btn-secondary" onclick="resetForm()">Recalculate</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
